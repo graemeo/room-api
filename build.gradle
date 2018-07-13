@@ -7,11 +7,40 @@ buildscript {
     }
 }
 
+version = System.getenv("BUILD_NUMBER")
+
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
 
-version = System.getenv("BUILD_NUMBER")
+jacocoTestReport {
+    reports {
+        xml.enabled = false
+        csv.enabled = false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = true
+            excludes = ['roomapi.domain.*', 'roomapi.Application']
+            element = 'CLASS'
+
+            limit {
+                minimum = 0.9
+            }
+        }
+    }
+}
+
+test {
+    doLast {
+
+    }
+}
 
 
 repositories {

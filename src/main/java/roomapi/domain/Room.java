@@ -1,5 +1,7 @@
 package roomapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 public class Room
@@ -8,6 +10,8 @@ public class Room
     private String description;
     private int minimumPax;
     private int maximumPax;
+
+    @JsonIgnore
     private List<Feature> features;
 
 
