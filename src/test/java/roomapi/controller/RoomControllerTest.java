@@ -27,8 +27,7 @@ public class RoomControllerTest
         // given
         // when
         // then
-        mockMvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Get a room!"));
+        mockMvc.perform(MockMvcRequestBuilders.get("/rooms").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk());
     }
 }
